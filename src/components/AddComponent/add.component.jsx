@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 
-// import './add.css';
+import * as actions from '../../actions';
 
-export class AddComponent extends Component {
+class AddComponent extends Component {
 
     constructor(props){
         super(props);
@@ -17,8 +18,8 @@ export class AddComponent extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
+        this.props.addComment(this.state.comment);
         this.setState({ comment: ''});
-
     }
 
     handleChange(event) {
@@ -37,3 +38,6 @@ export class AddComponent extends Component {
         );
     }
 }
+
+
+export default connect(null, actions)(AddComponent);
